@@ -91,7 +91,7 @@
 {
     // start game scene with transition
     [[CCDirector sharedDirector] replaceScene:[Game scene]
-                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionDown duration:.5f]];
+                               withTransition:[CCTransition transitionCrossFadeWithDuration:.5f]];
 
 }
 

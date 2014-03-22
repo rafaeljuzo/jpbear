@@ -71,7 +71,7 @@
 - (void)startGame {
     //	CCLOG(@"startGame");
     
-	playerScore = 0;
+	_playerScore = 0;
 	
 	[self resetClouds];
 	[self resetPlatforms];
@@ -82,7 +82,10 @@
 	_gameSuspended = NO;
 }
 
+// -----------------------------------------------------------------------
 #pragma mark - Init Methods
+// -----------------------------------------------------------------------
+
 
 - (void)initPlatforms {
 	
@@ -108,7 +111,9 @@
 	[batchNode addChild:platform z:3 name:[NSString stringWithFormat:@"%d",_currentPlatformTag]];
 }
 
+// -----------------------------------------------------------------------
 #pragma mark - Reset Methods
+// -----------------------------------------------------------------------
 
 - (void)resetPlatforms {
     //	CCLOG(@"resetPlatforms");
@@ -199,11 +204,11 @@
 	coin.visible = NO;
 	_currentcoinPlatformIndex += random() % (kMaxcoinStep - kMincoinStep) + kMincoinStep;
     
-	if(playerScore < 10) {
+	if(_playerScore < 10) {
 		_currentcoinType = 0;
-	} else if(playerScore < 50) {
+	} else if(_playerScore < 50) {
 		_currentcoinType = random() % 2;
-	} else if(playerScore < 100) {
+	} else if(_playerScore < 100) {
 		_currentcoinType = random() % 3;
 	} else {
 		_currentcoinType = random() % 2 + 2;
@@ -254,13 +259,13 @@
            _player_pos.y > coin_pos.y - range &&
            _player_pos.y < coin_pos.y + range ) {
             switch(_currentcoinType) {
-                case kcoin5:   playerScore += 5;   break;
-                case kcoin10:  playerScore += 10;  break;
-                case kcoin50:  playerScore += 50;  break;
-                case kcoin100: playerScore += 100; break;
+                case kcoin5:   _playerScore += 5;   break;
+                case kcoin10:  _playerScore += 10;  break;
+                case kcoin50:  _playerScore += 50;  break;
+                case kcoin100: _playerScore += 100; break;
             }
             //create a score string to update the real score
-            NSString *scoreStr = [NSString stringWithFormat:@"%d",playerScore];
+            NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
             //getting the score label
             CCLabelTTF *scoreLabel = (CCLabelTTF*)[self getChildByName:kScoreLabel recursively:NO];
             //updating the score
@@ -302,8 +307,8 @@
 //                CCLOG(@"NOVA PLATAFORMA %f", platform.position.y);
 //                if (oldPlatform.position.y < platform.position.y) {
 //
-//                    playerScore += 5;
-//                    NSString *scoreStr = [NSString stringWithFormat:@"%d",playerScore];
+//                    _playerScore += 5;
+//                    NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
 //                    
 //                    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
 //                    [scoreLabel setString:scoreStr];
@@ -319,7 +324,7 @@
         if(_player_pos.y < -player_size.height/2) {
 //            [self showHighscores];
             CCLOG(@"MORREU");
-            [self startGameOverSceneWithScore:playerScore];
+            [self startGameOverSceneWithScore:_playerScore];
         }
         
     } else if(_player_pos.y > 240) {
@@ -363,8 +368,8 @@
             }
         }
         //set the score with the delta (player position Y)
-        playerScore += (int)delta;
-        NSString *scoreStr = [NSString stringWithFormat:@"%d",playerScore];
+        _playerScore += (int)delta;
+        NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
         
         CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
         [scoreLabel setString:scoreStr];
@@ -377,23 +382,28 @@
     _player_vel.y = 800.0f + fabsf(_player_vel.x);
 }
 
+// -----------------------------------------------------------------------
+#pragma mark - Acceleration Delegates
+// -----------------------------------------------------------------------
+
 - (void)accelerometer:(CMAcceleration)acceleration {
 	if(_gameSuspended) return;
     
 	float accel_filter = 0.1f;
-	_player_vel.x = _player_vel.x * accel_filter + acceleration.x * (1.0f - accel_filter) * 500.0f;
+    // setting the player position X when the acelerometer delegate recoginize changes.
+	_player_vel.x = _player_vel.x * accel_filter + acceleration.x * (1.0f - accel_filter) * 650.0f;
 }
 
 // -----------------------------------------------------------------------
 #pragma mark - Button Callbacks
 // -----------------------------------------------------------------------
 
-- (void)startGameOverSceneWithScore: (int) score
+- (void)startGameOverSceneWithScore:(int)score
 {
     
     // start spinning scene with transition
     [[CCDirector sharedDirector] replaceScene:[GameOverScene sceneWithScore:score]
-                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionUp duration:.5f]];
+                               withTransition:[CCTransition transitionCrossFadeWithDuration:.5f]];
 }
 
 
