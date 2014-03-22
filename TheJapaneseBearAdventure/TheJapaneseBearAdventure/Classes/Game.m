@@ -99,8 +99,8 @@
     
 	CGRect rect;
 	switch(random()%2) {
-		case 0: rect = CGRectMake(608,64,102,36); break;
-		case 1: rect = CGRectMake(608,128,90,32); break;
+		case 0: rect = CGRectMake(608,64,90,36); break;
+		case 1: rect = CGRectMake(608,128,60,32); break;
 	}
     
 	CCSpriteBatchNode *batchNode = (CCSpriteBatchNode*)[self getChildByName:kSpriteManager recursively:NO];
@@ -185,7 +185,7 @@
 	_player_vel.y = 0;
 	
 	_player_acc.x = 0;
-	_player_acc.y = -550.0f;
+	_player_acc.y = -1500.0f;
 	
 	_playerLookingRight = YES;
 	player.scaleX = 1.0f;
@@ -294,6 +294,9 @@
                _player_pos.y > platform_pos.y &&
                _player_pos.y < min_y) {
                 [self jump];
+                if (CGRectIntersectsRect(player.boundingBox, platform.boundingBox)) {
+                    
+                }
                 
 //                CCLOG(@"VELHA PLATAFORMA %f", oldPlatform.position.y);
 //                CCLOG(@"NOVA PLATAFORMA %f", platform.position.y);
@@ -371,7 +374,7 @@
 }
 
 - (void)jump {
-    _player_vel.y = 350.0f + fabsf(_player_vel.x);
+    _player_vel.y = 800.0f + fabsf(_player_vel.x);
 }
 
 - (void)accelerometer:(CMAcceleration)acceleration {
