@@ -32,14 +32,15 @@
     //bool to recognize what side the sprite player is looking for.
 	BOOL _playerLookingRight;
 	
-	int _score;
+	int playerScore;
     
 }
 
 + (Game *)scene;
 - (id)init;
 - (void)startGame;
-
+@property (nonatomic) int playerScore;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+
 
 @end

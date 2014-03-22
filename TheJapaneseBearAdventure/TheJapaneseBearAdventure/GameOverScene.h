@@ -13,10 +13,10 @@
 #import "Game.h"
 
 @interface GameOverScene : Background {
-    
+    int _finalScore;
 }
-
-+ (GameOverScene *)scene;
+@property (nonatomic) int finalScore;
++ (GameOverScene *)sceneWithScore:(int)score;
 - (id)init;
 
 @end

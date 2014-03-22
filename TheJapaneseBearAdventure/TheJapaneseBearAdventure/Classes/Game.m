@@ -71,7 +71,7 @@
 - (void)startGame {
     //	CCLOG(@"startGame");
     
-	_score = 0;
+	playerScore = 0;
 	
 	[self resetClouds];
 	[self resetPlatforms];
@@ -199,11 +199,11 @@
 	coin.visible = NO;
 	_currentcoinPlatformIndex += random() % (kMaxcoinStep - kMincoinStep) + kMincoinStep;
     
-	if(_score < 10) {
+	if(playerScore < 10) {
 		_currentcoinType = 0;
-	} else if(_score < 50) {
+	} else if(playerScore < 50) {
 		_currentcoinType = random() % 2;
-	} else if(_score < 100) {
+	} else if(playerScore < 100) {
 		_currentcoinType = random() % 3;
 	} else {
 		_currentcoinType = random() % 2 + 2;
@@ -254,13 +254,13 @@
            _player_pos.y > coin_pos.y - range &&
            _player_pos.y < coin_pos.y + range ) {
             switch(_currentcoinType) {
-                case kcoin5:   _score += 5;   break;
-                case kcoin10:  _score += 10;  break;
-                case kcoin50:  _score += 50;  break;
-                case kcoin100: _score += 100; break;
+                case kcoin5:   playerScore += 5;   break;
+                case kcoin10:  playerScore += 10;  break;
+                case kcoin50:  playerScore += 50;  break;
+                case kcoin100: playerScore += 100; break;
             }
             //create a score string to update the real score
-            NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
+            NSString *scoreStr = [NSString stringWithFormat:@"%d",playerScore];
             //getting the score label
             CCLabelTTF *scoreLabel = (CCLabelTTF*)[self getChildByName:kScoreLabel recursively:NO];
             //updating the score
@@ -299,8 +299,8 @@
 //                CCLOG(@"NOVA PLATAFORMA %f", platform.position.y);
 //                if (oldPlatform.position.y < platform.position.y) {
 //
-//                    _score += 5;
-//                    NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
+//                    playerScore += 5;
+//                    NSString *scoreStr = [NSString stringWithFormat:@"%d",playerScore];
 //                    
 //                    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
 //                    [scoreLabel setString:scoreStr];
@@ -316,7 +316,7 @@
         if(_player_pos.y < -player_size.height/2) {
 //            [self showHighscores];
             CCLOG(@"MORREU");
-            [self startGameOverScene];
+            [self startGameOverSceneWithScore:playerScore];
         }
         
     } else if(_player_pos.y > 240) {
@@ -360,8 +360,8 @@
             }
         }
         //set the score with the delta (player position Y)
-        _score += (int)delta;
-        NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
+        playerScore += (int)delta;
+        NSString *scoreStr = [NSString stringWithFormat:@"%d",playerScore];
         
         CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
         [scoreLabel setString:scoreStr];
@@ -385,10 +385,11 @@
 #pragma mark - Button Callbacks
 // -----------------------------------------------------------------------
 
-- (void)startGameOverScene
+- (void)startGameOverSceneWithScore: (int) score
 {
+    
     // start spinning scene with transition
-    [[CCDirector sharedDirector] replaceScene:[GameOverScene scene]
+    [[CCDirector sharedDirector] replaceScene:[GameOverScene sceneWithScore:score]
                                withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionUp duration:.5f]];
 }
 
