@@ -41,7 +41,7 @@
 {
     // start game scene with transition
     [[CCDirector sharedDirector] replaceScene:[Game scene]
-                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionUp duration:.5f]];
+                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionDown duration:.5f]];
     //restart game
     Game *game = [[Game alloc]init];
     [game startGame];
