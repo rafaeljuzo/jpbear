@@ -22,8 +22,8 @@
 	float _currentPlatformY;
 	int _currentPlatformTag;
 	float _currentMaxPlatformStep;
-	int _currentBonusPlatformIndex;
-	int _currentBonusType;
+	int _currentcoinPlatformIndex;
+	int _currentcoinType;
 	int _platformCount;
     
 	//bool to pause/return game.

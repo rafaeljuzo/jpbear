@@ -19,17 +19,25 @@
 //number of plataforms shown at the screen
 #define kNumPlatforms		10
 #define kPlatformTopPadding 10
-
-#define kMinBonusStep		30
-#define kMaxBonusStep		50
+//values for distance between coins (max and min).
+#define kMincoinStep		20
+#define kMaxcoinStep		70
 
 #define kSpriteManager      @"manager"
-#define kplayer               @"player"
+#define kplayer             @"player"
 #define kScoreLabel         @"scoreLabel"
 
 #define kCloudsStartTag     100
 #define kPlatformsStartTag  200
-#define kBonusStartTag      300
+#define kcoinStartTag       300
+
+enum {
+	kcoin5 = 0,
+	kcoin10,
+	kcoin50,
+	kcoin100,
+	kNumcoines
+};
 
 @interface Background : CCScene {
     

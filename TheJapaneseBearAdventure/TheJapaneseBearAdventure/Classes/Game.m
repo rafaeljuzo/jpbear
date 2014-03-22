@@ -15,7 +15,7 @@
 - (void)resetPlatforms;
 - (void)resetPlatform;
 - (void)resetplayer;
-- (void)resetBonus;
+- (void)resetcoin;
 - (void)jump;
 - (void)showHighscores;
 @end
@@ -38,14 +38,20 @@
 	CCSprite *player = [CCSprite spriteWithTexture:[batchNode texture] rect:CGRectMake(608,16,44,32)];
 	[batchNode addChild:player z:4 name:kplayer];
 
+    CCSprite *coin;
+    
+	for(int i=0; i<kNumcoines; i++) {
+		coin = [CCSprite spriteWithTexture:[batchNode texture] rect:CGRectMake(608+i*32,256,25,25)];
+		[batchNode addChild:coin z:4 name:[NSString stringWithFormat:@"%d",kcoinStartTag+i]];
+		coin.visible = NO;
+	}
     
     //Create a label to show the player score.
-//	CCLabelBMFont *scoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapFont.fnt"];
+    //	CCLabelBMFont *scoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"bitmapFont.fnt"];
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"0" fontName:@"Verdana-Bold" fontSize:17.0f];
 	[self addChild:label z:5 name:kScoreLabel];
     label.positionType = CCPositionTypeNormalized;
-//  label.position = ccp(0.50f, 0.95f); // Middle, Near Top
-    label.position = CGPointMake(0.50f, 0.95f); // Middle, Near Top
+    label.position = ccp(0.50f, 0.95f); // Middle, Near Top
     
     // Core Motion Accelerometer
     self.motionManager = [[CMMotionManager alloc] init];
@@ -70,11 +76,13 @@
 	[self resetClouds];
 	[self resetPlatforms];
 	[self resetplayer];
-//	[self resetBonus];
+	[self resetcoin];
 	
 	[[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 	_gameSuspended = NO;
 }
+
+#pragma mark - Init Methods
 
 - (void)initPlatforms {
 	
@@ -100,14 +108,16 @@
 	[batchNode addChild:platform z:3 name:[NSString stringWithFormat:@"%d",_currentPlatformTag]];
 }
 
+#pragma mark - Reset Methods
+
 - (void)resetPlatforms {
     //	CCLOG(@"resetPlatforms");
 	
 	_currentPlatformY = -1;
 	_currentPlatformTag = kPlatformsStartTag;
 	_currentMaxPlatformStep = 60.0f;
-	_currentBonusPlatformIndex = 0;
-	_currentBonusType = 0;
+	_currentcoinPlatformIndex = 0;
+	_currentcoinType = 0;
 	_platformCount = 0;
     
 	while(_currentPlatformTag < kPlatformsStartTag + kNumPlatforms) {
@@ -151,11 +161,11 @@
 	_platformCount++;
 	//CCLOG(@"platformCount = %d",_platformCount);
 	
-	if(_platformCount == _currentBonusPlatformIndex) {
-        //		CCLOG(@"platformCount == _currentBonusPlatformIndex");
-		CCSprite *bonus = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",(kBonusStartTag+_currentBonusType)] recursively:NO];
-		bonus.position = ccp(x,_currentPlatformY+30);
-		bonus.visible = YES;
+	if(_platformCount == _currentcoinPlatformIndex) {
+        //		CCLOG(@"platformCount == _currentcoinPlatformIndex");
+		CCSprite *coin = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",(kcoinStartTag+_currentcoinType)] recursively:NO];
+		coin.position = ccp(x,_currentPlatformY+30);
+		coin.visible = YES;
 	}
 }
 
@@ -180,6 +190,28 @@
 	_playerLookingRight = YES;
 	player.scaleX = 1.0f;
 }
+
+- (void)resetcoin {
+    //	CCLOG(@"resetcoin");
+	
+	CCSpriteBatchNode *batchNode = (CCSpriteBatchNode*)[self getChildByName:kSpriteManager recursively:NO];
+	CCSprite *coin = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",(kcoinStartTag+_currentcoinType)] recursively:NO];
+	coin.visible = NO;
+	_currentcoinPlatformIndex += random() % (kMaxcoinStep - kMincoinStep) + kMincoinStep;
+    
+	if(_score < 10) {
+		_currentcoinType = 0;
+	} else if(_score < 50) {
+		_currentcoinType = random() % 2;
+	} else if(_score < 100) {
+		_currentcoinType = random() % 3;
+	} else {
+		_currentcoinType = random() % 2 + 2;
+	}
+}
+
+
+
 
 - (void)update:(CCTime)dt {
     //	CCLOG(@"Game::step");
@@ -211,31 +243,37 @@
     _player_vel.y += _player_acc.y * dt;
     _player_pos.y += _player_vel.y * dt;
     
-//    CCSprite *bonus = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",(kBonusStartTag+_currentBonusType)] recursively:NO];
-//    
-//    if(bonus.visible) {
-//        CGPoint bonus_pos = bonus.position;
-//        float range = 20.0f;
-//        if(_player_pos.x > bonus_pos.x - range &&
-//           _player_pos.x < bonus_pos.x + range &&
-//           _player_pos.y > bonus_pos.y - range &&
-//           _player_pos.y < bonus_pos.y + range ) {
-//            switch(_currentBonusType) {
-//                case kBonus5:   _score += 5000;   break;
-//                case kBonus10:  _score += 10000;  break;
-//                case kBonus50:  _score += 50000;  break;
-//                case kBonus100: _score += 100000; break;
-//            }
-//            NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
-//            CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
-//            [scoreLabel setString:scoreStr];
-//            id a1 = [CCActionScaleTo actionWithDuration:0.2f scaleX:1.5f scaleY:0.8f];
-//            id a2 = [CCActionScaleTo actionWithDuration:0.2f scaleX:1.0f scaleY:1.0f];
-//            id a3 = [CCActionSequence actions:a1,a2,a1,a2,a1,a2,nil];
-//            [scoreLabel runAction:a3];
-//            [self resetBonus];
-//        }
-//    }
+    //create a coin sprite with a random type when the update is called.
+    CCSprite *coin = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",(kcoinStartTag+_currentcoinType)] recursively:NO];
+    //check if the coin is visible
+    if(coin.visible) {
+        CGPoint coin_pos = coin.position;
+        float range = 20.0f;
+        if(_player_pos.x > coin_pos.x - range &&
+           _player_pos.x < coin_pos.x + range &&
+           _player_pos.y > coin_pos.y - range &&
+           _player_pos.y < coin_pos.y + range ) {
+            switch(_currentcoinType) {
+                case kcoin5:   _score += 5;   break;
+                case kcoin10:  _score += 10;  break;
+                case kcoin50:  _score += 50;  break;
+                case kcoin100: _score += 100; break;
+            }
+            //create a score string to update the real score
+            NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
+            //getting the score label
+            CCLabelTTF *scoreLabel = (CCLabelTTF*)[self getChildByName:kScoreLabel recursively:NO];
+            //updating the score
+            [scoreLabel setString:scoreStr];
+            //creating an animation when the player reach the coin
+            id a1 = [CCActionScaleTo actionWithDuration:0.2f scaleX:1.5f scaleY:0.8f];
+            id a2 = [CCActionScaleTo actionWithDuration:0.2f scaleX:1.0f scaleY:1.0f];
+            id a3 = [CCActionSequence actions:a1,a2,a1,a2,a1,a2,nil];
+            //run the action to animate the label
+            [scoreLabel runAction:a3];
+            [self resetcoin];
+        }
+    }
     
     if(_player_vel.y < 0) {
         
@@ -257,10 +295,12 @@
             }
         }
         
-//        if(_player_pos.y < -player_size.height/2) {
+        if(_player_pos.y < -player_size.height/2) {
 //            [self showHighscores];
-//        }
-//        
+            CCLOG(@"MORREU");
+            [self startGame];
+        }
+        
     } else if(_player_pos.y > 240) {
         
         float delta = _player_pos.y - 240;
@@ -292,16 +332,16 @@
             }
         }
         
-//        if(bonus.visible) {
-//            CGPoint pos = bonus.position;
-//            pos.y -= delta;
-//            if(pos.y < -bonus.contentSize.height/2) {
-//                [self resetBonus];
-//            } else {
-//                bonus.position = pos;
-//            }
-//        }
-        
+        if(coin.visible) {
+            CGPoint pos = coin.position;
+            pos.y -= delta;
+            if(pos.y < -coin.contentSize.height/2) {
+                [self resetcoin];
+            } else {
+                coin.position = pos;
+            }
+        }
+        //set the score with the delta (player position Y)
         _score += (int)delta;
         NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
         
