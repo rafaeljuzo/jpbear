@@ -213,6 +213,7 @@
 		6B6BA92E18C67F6F00802B95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BA92D18C67F6F00802B95 /* main.m */; };
 		6B6BA93218C67F7000802B95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BA93118C67F7000802B95 /* AppDelegate.m */; };
 		6B6BA93818C67F7000802B95 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BA93718C67F7000802B95 /* IntroScene.m */; };
+		6B8C673C18DDF7E50051F804 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C673B18DDF7E50051F804 /* GameOverScene.m */; };
 		6B8C684418DD49E10008DEDE /* sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B8C684318DD49E10008DEDE /* sprites.png */; };
 		6B8C684918DD4A080008DEDE /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C684618DD4A080008DEDE /* Background.m */; };
 		6B8C684A18DD4A080008DEDE /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C684818DD4A080008DEDE /* Game.m */; };
@@ -658,6 +659,8 @@
 		6B6BA93118C67F7000802B95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		6B6BA93618C67F7000802B95 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		6B6BA93718C67F7000802B95 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
+		6B8C673A18DDF7E50051F804 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		6B8C673B18DDF7E50051F804 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		6B8C684318DD49E10008DEDE /* sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sprites.png; path = Resources/Images/sprites.png; sourceTree = "<group>"; };
 		6B8C684518DD4A080008DEDE /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Classes/Background.h; sourceTree = "<group>"; };
 		6B8C684618DD4A080008DEDE /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = Classes/Background.m; sourceTree = "<group>"; };
@@ -1580,6 +1583,8 @@
 				6B6BA93118C67F7000802B95 /* AppDelegate.m */,
 				6B6BA93618C67F7000802B95 /* IntroScene.h */,
 				6B6BA93718C67F7000802B95 /* IntroScene.m */,
+				6B8C673A18DDF7E50051F804 /* GameOverScene.h */,
+				6B8C673B18DDF7E50051F804 /* GameOverScene.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1695,6 +1700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B6BA73718C67F6D00802B95 /* CCParticleBatchNode.m in Sources */,
+				6B8C673C18DDF7E50051F804 /* GameOverScene.m in Sources */,
 				6B6BA8AF18C67F6F00802B95 /* CCBReader.m in Sources */,
 				6B6BA85F18C67F6E00802B95 /* CCButton.m in Sources */,
 				6B6BA80A18C67F6E00802B95 /* OALAudioActions.m in Sources */,

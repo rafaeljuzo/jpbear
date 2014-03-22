@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheJapaneseBearAdventure/Classes/Game.m"
-            timestampString = "417157076.836547"
+            timestampString = "417201966.650989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377">
+            startingLineNumber = "405"
+            endingLineNumber = "405">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheJapaneseBearAdventure/Classes/Game.m"
-            timestampString = "417157076.836547"
+            timestampString = "417201966.650989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374">
+            startingLineNumber = "402"
+            endingLineNumber = "402">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -54,13 +54,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheJapaneseBearAdventure/Classes/Game.m"
-            timestampString = "417157076.836547"
+            timestampString = "417197840.187764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
-            landmarkName = "@implementation Game"
-            landmarkType = "3">
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "-update:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -91,7 +91,39 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "-initPlatform"
+            landmarkName = "-initPlatforms"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheJapaneseBearAdventure/Classes/Game.m"
+            timestampString = "417157142.041566"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-resetPlatforms"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheJapaneseBearAdventure/GameOverScene.m"
+            timestampString = "417202395.936906"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -102,12 +134,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheJapaneseBearAdventure/Classes/Game.m"
-            timestampString = "417157142.041566"
+            timestampString = "417202395.936906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "-resetPlatform"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "-startGameOverSceneWithScore:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

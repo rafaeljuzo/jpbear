@@ -14,7 +14,7 @@
 // number of clouds to appear on background movement.
 #define kNumClouds			8
 //values for distance between plataforms (max and min).
-#define kMinPlatformStep	50
+#define kMinPlatformStep	90
 #define kMaxPlatformStep	300
 //number of plataforms shown at the screen
 #define kNumPlatforms		10
