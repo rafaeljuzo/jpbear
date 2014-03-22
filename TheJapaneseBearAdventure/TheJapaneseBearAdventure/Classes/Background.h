@@ -20,11 +20,11 @@
 #define kNumPlatforms		10
 #define kPlatformTopPadding 10
 //values for distance between coins (max and min).
-#define kMincoinStep		20
-#define kMaxcoinStep		70
+#define kMincoinStep		30
+#define kMaxcoinStep		50
 
 #define kSpriteManager      @"manager"
-#define kplayer             @"player"
+#define kplayer               @"player"
 #define kScoreLabel         @"scoreLabel"
 
 #define kCloudsStartTag     100

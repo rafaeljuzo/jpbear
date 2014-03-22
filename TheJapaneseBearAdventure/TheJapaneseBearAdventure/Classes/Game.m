@@ -275,8 +275,10 @@
         }
     }
     
+    
     if(_player_vel.y < 0) {
-        
+//        CCSprite *oldPlatform = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",kPlatformsStartTag] recursively:NO];
+
         for(int t=kPlatformsStartTag; t < kPlatformsStartTag + kNumPlatforms; t++) {
             CCSprite *platform = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",t] recursively:NO];
             
@@ -292,13 +294,29 @@
                _player_pos.y > platform_pos.y &&
                _player_pos.y < min_y) {
                 [self jump];
+                
+//                CCLOG(@"VELHA PLATAFORMA %f", oldPlatform.position.y);
+//                CCLOG(@"NOVA PLATAFORMA %f", platform.position.y);
+//                if (oldPlatform.position.y < platform.position.y) {
+//
+//                    _score += 5;
+//                    NSString *scoreStr = [NSString stringWithFormat:@"%d",_score];
+//                    
+//                    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
+//                    [scoreLabel setString:scoreStr];
+//                    
+//                    oldPlatform = platform;
+//                    
+//
+//                }
             }
         }
+
         
         if(_player_pos.y < -player_size.height/2) {
 //            [self showHighscores];
             CCLOG(@"MORREU");
-            [self startGame];
+            [self startGameOverScene];
         }
         
     } else if(_player_pos.y > 240) {
@@ -363,6 +381,16 @@
 	_player_vel.x = _player_vel.x * accel_filter + acceleration.x * (1.0f - accel_filter) * 500.0f;
 }
 
+// -----------------------------------------------------------------------
+#pragma mark - Button Callbacks
+// -----------------------------------------------------------------------
+
+- (void)startGameOverScene
+{
+    // start spinning scene with transition
+    [[CCDirector sharedDirector] replaceScene:[GameOverScene scene]
+                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionUp duration:.5f]];
+}
 
 
 @end

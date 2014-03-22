@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Background.h"
+#import "GameOverScene.h"
 #import <CoreMotion/CoreMotion.h>
 
 @interface Game : Background {
@@ -37,6 +38,7 @@
 
 + (Game *)scene;
 - (id)init;
+- (void)startGame;
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
