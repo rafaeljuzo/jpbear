@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		696A6F3118DDD8B900D87657 /* japanese.png in Resources */ = {isa = PBXBuildFile; fileRef = 696A6F3018DDD8B900D87657 /* japanese.png */; };
+		696A6F3318DDD8C300D87657 /* japanesecoordinates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 696A6F3218DDD8C300D87657 /* japanesecoordinates.plist */; };
 		6B6BA68918C67F6C00802B95 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6BA68818C67F6C00802B95 /* QuartzCore.framework */; };
 		6B6BA68B18C67F6C00802B95 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6BA68A18C67F6C00802B95 /* OpenGLES.framework */; };
 		6B6BA68D18C67F6C00802B95 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6BA68C18C67F6C00802B95 /* OpenAL.framework */; };
@@ -228,6 +230,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		696A6F3018DDD8B900D87657 /* japanese.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = japanese.png; path = Resources/Images/japanese.png; sourceTree = "<group>"; };
+		696A6F3218DDD8C300D87657 /* japanesecoordinates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = japanesecoordinates.plist; path = Resources/japanesecoordinates.plist; sourceTree = "<group>"; };
 		6B6BA68518C67F6C00802B95 /* TheJapaneseBearAdventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheJapaneseBearAdventure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B6BA68818C67F6C00802B95 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6B6BA68A18C67F6C00802B95 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -684,6 +688,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		696A6F2E18DDD85200D87657 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				696A6F3018DDD8B900D87657 /* japanese.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		696A6F2F18DDD89100D87657 /* help */ = {
+			isa = PBXGroup;
+			children = (
+				696A6F3218DDD8C300D87657 /* japanesecoordinates.plist */,
+			);
+			name = help;
+			sourceTree = "<group>";
+		};
 		6B6BA67C18C67F6C00802B95 = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +753,8 @@
 		6B6BA6A118C67F6C00802B95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				696A6F2F18DDD89100D87657 /* help */,
+				696A6F2E18DDD85200D87657 /* images */,
 				6B8C684318DD49E10008DEDE /* sprites.png */,
 				6B6BA6A218C67F6C00802B95 /* Default.png */,
 				6B6BA6A418C67F6C00802B95 /* Default@2x.png */,
@@ -1645,6 +1667,8 @@
 				6B6BA6A318C67F6C00802B95 /* Default.png in Resources */,
 				6B6BA6AC18C67F6C00802B95 /* Icon.png in Resources */,
 				6B6BA6BA18C67F6C00802B95 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
+				696A6F3118DDD8B900D87657 /* japanese.png in Resources */,
+				696A6F3318DDD8C300D87657 /* japanesecoordinates.plist in Resources */,
 				6B6BA6A918C67F6C00802B95 /* Default-Landscape~ipad.png in Resources */,
 				6B6BA6BE18C67F6C00802B95 /* Icon-Small.png in Resources */,
 				6B6BA6BC18C67F6C00802B95 /* Icon-Small-50.png in Resources */,
