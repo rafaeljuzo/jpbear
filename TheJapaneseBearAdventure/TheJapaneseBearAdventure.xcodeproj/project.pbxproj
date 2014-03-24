@@ -219,10 +219,10 @@
 		6B8C684A18DD4A080008DEDE /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C684818DD4A080008DEDE /* Game.m */; };
 		6B8C684C18DD4A2E0008DEDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8C684B18DD4A2E0008DEDE /* CoreMotion.framework */; };
 		6BC9914F18DF9B53004D866C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC9914E18DF9B53004D866C /* CoreData.framework */; };
-		6BC9915218DF9B65004D866C /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9915018DF9B65004D866C /* GameModel.xcdatamodeld */; };
 		6BC9917418DFC5F0004D866C /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9916D18DFC5F0004D866C /* CoreDataManager.m */; };
 		6BC9917518DFC5F0004D866C /* PlayerDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9917018DFC5F0004D866C /* PlayerDAO.m */; };
 		6BC9917618DFC5F0004D866C /* PlayerVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9917318DFC5F0004D866C /* PlayerVO.m */; };
+		6BC9917918DFC9FB004D866C /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9917718DFC9FB004D866C /* GameModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -673,13 +673,13 @@
 		6B8C684818DD4A080008DEDE /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Classes/Game.m; sourceTree = "<group>"; };
 		6B8C684B18DD4A2E0008DEDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		6BC9914E18DF9B53004D866C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		6BC9915118DF9B65004D866C /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
 		6BC9916C18DFC5F0004D866C /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		6BC9916D18DFC5F0004D866C /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		6BC9916F18DFC5F0004D866C /* PlayerDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerDAO.h; sourceTree = "<group>"; };
 		6BC9917018DFC5F0004D866C /* PlayerDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerDAO.m; sourceTree = "<group>"; };
 		6BC9917218DFC5F0004D866C /* PlayerVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVO.h; sourceTree = "<group>"; };
 		6BC9917318DFC5F0004D866C /* PlayerVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVO.m; sourceTree = "<group>"; };
+		6BC9917818DFC9FB004D866C /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -771,6 +771,7 @@
 		6B6BA6A118C67F6C00802B95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6BC9917718DFC9FB004D866C /* GameModel.xcdatamodeld */,
 				696A6F2F18DDD89100D87657 /* help */,
 				696A6F2E18DDD85200D87657 /* images */,
 				6B8C684318DD49E10008DEDE /* sprites.png */,
@@ -782,7 +783,6 @@
 				6B6BA6C618C67F6C00802B95 /* iTunesArtwork */,
 				6B6BA6C818C67F6C00802B95 /* iTunesArtwork@2x */,
 				6B6BA6AA18C67F6C00802B95 /* Icons */,
-				6BC9915018DF9B65004D866C /* GameModel.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1819,6 +1819,7 @@
 				6B6BA81A18C67F6E00802B95 /* OALSimpleAudio.m in Sources */,
 				6B6BA70C18C67F6D00802B95 /* CCGLProgram.m in Sources */,
 				6BC9917518DFC5F0004D866C /* PlayerDAO.m in Sources */,
+				6BC9917918DFC9FB004D866C /* GameModel.xcdatamodeld in Sources */,
 				6B6BA92E18C67F6F00802B95 /* main.m in Sources */,
 				6B6BA84118C67F6E00802B95 /* OALAudioSession.m in Sources */,
 				6B6BA8B818C67F6F00802B95 /* CCBLocalizationManager.m in Sources */,
@@ -1841,7 +1842,6 @@
 				6B6BA79418C67F6D00802B95 /* CCTextureAtlas.m in Sources */,
 				6B8C684918DD4A080008DEDE /* Background.m in Sources */,
 				6B6BA85518C67F6E00802B95 /* OALAudioFile.m in Sources */,
-				6BC9915218DF9B65004D866C /* GameModel.xcdatamodeld in Sources */,
 				6B6BA77B18C67F6D00802B95 /* ccShaders.m in Sources */,
 				6B6BA88F18C67F6F00802B95 /* matrix.c in Sources */,
 				6B6BA7A118C67F6D00802B95 /* CCTiledMapLayer.m in Sources */,
@@ -2109,13 +2109,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6BC9915018DF9B65004D866C /* GameModel.xcdatamodeld */ = {
+		6BC9917718DFC9FB004D866C /* GameModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				6BC9915118DF9B65004D866C /* GameModel.xcdatamodel */,
+				6BC9917818DFC9FB004D866C /* GameModel.xcdatamodel */,
 			);
-			currentVersion = 6BC9915118DF9B65004D866C /* GameModel.xcdatamodel */;
-			path = GameModel.xcdatamodeld;
+			currentVersion = 6BC9917818DFC9FB004D866C /* GameModel.xcdatamodel */;
+			name = GameModel.xcdatamodeld;
+			path = Resources/GameModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
