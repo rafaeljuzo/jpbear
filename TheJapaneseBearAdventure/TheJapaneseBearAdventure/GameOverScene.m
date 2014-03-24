@@ -83,7 +83,7 @@
 // -----------------------------------------------------------------------
 
 /**
- Method resposible to check ans insert or update the score on database.
+ Method resposible to check and insert or update the score on database.
  @param score a NSNumber that is the actual player score.
  */
 - (void)saveNewBestScore:(NSNumber *)score

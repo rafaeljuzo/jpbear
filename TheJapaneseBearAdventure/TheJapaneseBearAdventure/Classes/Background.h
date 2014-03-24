@@ -24,7 +24,7 @@
 #define kMaxcoinStep		50
 
 #define kSpriteManager      @"manager"
-#define kplayer               @"player"
+#define kplayer             @"player"
 #define kScoreLabel         @"scoreLabel"
 
 #define kCloudsStartTag     100

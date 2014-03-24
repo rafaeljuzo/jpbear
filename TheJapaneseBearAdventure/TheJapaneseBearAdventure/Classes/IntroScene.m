@@ -61,7 +61,7 @@
 {
     // start spinning scene with transition
     [[CCDirector sharedDirector] replaceScene:[Game scene]
-                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
+                               withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:.3f]];
 }
 
 

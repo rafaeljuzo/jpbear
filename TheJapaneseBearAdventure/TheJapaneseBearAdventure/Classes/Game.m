@@ -35,7 +35,7 @@
     
 	[self initPlatforms];
 	
-	CCSprite *player = [CCSprite spriteWithTexture:[batchNode texture] rect:CGRectMake(608,16,44,32)];
+	CCSprite *player = [CCSprite spriteWithTexture:[batchNode texture] rect:CGRectMake(608,5,45,50)];
 	[batchNode addChild:player z:4 name:kplayer];
 
     CCSprite *coin;
@@ -302,21 +302,6 @@
                 if (CGRectIntersectsRect(player.boundingBox, platform.boundingBox)) {
                     
                 }
-                
-//                CCLOG(@"VELHA PLATAFORMA %f", oldPlatform.position.y);
-//                CCLOG(@"NOVA PLATAFORMA %f", platform.position.y);
-//                if (oldPlatform.position.y < platform.position.y) {
-//
-//                    _playerScore += 5;
-//                    NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
-//                    
-//                    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
-//                    [scoreLabel setString:scoreStr];
-//                    
-//                    oldPlatform = platform;
-//                    
-//
-//                }
             }
         }
 

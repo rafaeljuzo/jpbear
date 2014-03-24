@@ -209,6 +209,7 @@
 		for(OALAction* action in actions_)
 		{
 			[pDurations_ addObject:[NSNumber numberWithFloat:0]];
+            NSLog(@"%@", action);
 		}
 	}
 	else
