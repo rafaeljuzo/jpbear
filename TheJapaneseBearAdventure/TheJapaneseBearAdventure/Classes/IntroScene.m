@@ -41,12 +41,11 @@
     // Hello world
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Chalkduster" fontSize:36.0f];
     label.positionType = CCPositionTypeNormalized;
-    label.color = [CCColor redColor];
     label.position = ccp(0.5f, 0.5f); // Middle of screen
     [self addChild:label];
     
     // Spinning scene button
-    CCButton *spinningButton = [CCButton buttonWithTitle:@"[ Simple Sprite ]" fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCButton *spinningButton = [CCButton buttonWithTitle:@"[ Play ]" fontName:@"Verdana-Bold" fontSize:18.0f];
     spinningButton.positionType = CCPositionTypeNormalized;
     spinningButton.position = ccp(0.5f, 0.35f);
     [spinningButton setTarget:self selector:@selector(onSpinningClicked:)];

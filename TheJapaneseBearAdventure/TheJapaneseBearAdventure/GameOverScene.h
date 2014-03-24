@@ -11,12 +11,19 @@
 #import "cocos2d-ui.h"
 #import "Background.h"
 #import "Game.h"
+#import "PlayerDAO.h"
+
 
 @interface GameOverScene : Background {
+
     int _finalScore;
+    PlayerDAO *playerDAO;
+
 }
+
 @property (nonatomic) int finalScore;
+
 + (GameOverScene *)sceneWithScore:(int)score;
-- (id)init;
+- (id)initWithScore:(int)score;
 
 @end

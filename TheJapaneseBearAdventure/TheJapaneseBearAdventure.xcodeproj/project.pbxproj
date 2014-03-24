@@ -218,6 +218,11 @@
 		6B8C684918DD4A080008DEDE /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C684618DD4A080008DEDE /* Background.m */; };
 		6B8C684A18DD4A080008DEDE /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C684818DD4A080008DEDE /* Game.m */; };
 		6B8C684C18DD4A2E0008DEDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8C684B18DD4A2E0008DEDE /* CoreMotion.framework */; };
+		6BC9914F18DF9B53004D866C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC9914E18DF9B53004D866C /* CoreData.framework */; };
+		6BC9915218DF9B65004D866C /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9915018DF9B65004D866C /* GameModel.xcdatamodeld */; };
+		6BC9917418DFC5F0004D866C /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9916D18DFC5F0004D866C /* CoreDataManager.m */; };
+		6BC9917518DFC5F0004D866C /* PlayerDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9917018DFC5F0004D866C /* PlayerDAO.m */; };
+		6BC9917618DFC5F0004D866C /* PlayerVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9917318DFC5F0004D866C /* PlayerVO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -667,6 +672,14 @@
 		6B8C684718DD4A080008DEDE /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = Classes/Game.h; sourceTree = "<group>"; };
 		6B8C684818DD4A080008DEDE /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Classes/Game.m; sourceTree = "<group>"; };
 		6B8C684B18DD4A2E0008DEDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		6BC9914E18DF9B53004D866C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6BC9915118DF9B65004D866C /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
+		6BC9916C18DFC5F0004D866C /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		6BC9916D18DFC5F0004D866C /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		6BC9916F18DFC5F0004D866C /* PlayerDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerDAO.h; sourceTree = "<group>"; };
+		6BC9917018DFC5F0004D866C /* PlayerDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerDAO.m; sourceTree = "<group>"; };
+		6BC9917218DFC5F0004D866C /* PlayerVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerVO.h; sourceTree = "<group>"; };
+		6BC9917318DFC5F0004D866C /* PlayerVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVO.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +687,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC9914F18DF9B53004D866C /* CoreData.framework in Frameworks */,
 				6B8C684C18DD4A2E0008DEDE /* CoreMotion.framework in Frameworks */,
 				6B6BA69F18C67F6C00802B95 /* libObjectiveChipmunk.a in Frameworks */,
 				6B6BA68D18C67F6C00802B95 /* OpenAL.framework in Frameworks */,
@@ -728,6 +742,7 @@
 		6B6BA68718C67F6C00802B95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BC9914E18DF9B53004D866C /* CoreData.framework */,
 				6B8C684B18DD4A2E0008DEDE /* CoreMotion.framework */,
 				6B6BA68818C67F6C00802B95 /* QuartzCore.framework */,
 				6B6BA68A18C67F6C00802B95 /* OpenGLES.framework */,
@@ -767,6 +782,7 @@
 				6B6BA6C618C67F6C00802B95 /* iTunesArtwork */,
 				6B6BA6C818C67F6C00802B95 /* iTunesArtwork@2x */,
 				6B6BA6AA18C67F6C00802B95 /* Icons */,
+				6BC9915018DF9B65004D866C /* GameModel.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1575,6 +1591,7 @@
 		6B6BA92F18C67F7000802B95 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6BC9916B18DFC5F0004D866C /* Persistence */,
 				6B8C684518DD4A080008DEDE /* Background.h */,
 				6B8C684618DD4A080008DEDE /* Background.m */,
 				6B8C684718DD4A080008DEDE /* Game.h */,
@@ -1587,6 +1604,36 @@
 				6B8C673B18DDF7E50051F804 /* GameOverScene.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		6BC9916B18DFC5F0004D866C /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				6BC9916C18DFC5F0004D866C /* CoreDataManager.h */,
+				6BC9916D18DFC5F0004D866C /* CoreDataManager.m */,
+				6BC9916E18DFC5F0004D866C /* DAO */,
+				6BC9917118DFC5F0004D866C /* VO */,
+			);
+			name = Persistence;
+			path = Classes/Persistence;
+			sourceTree = "<group>";
+		};
+		6BC9916E18DFC5F0004D866C /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				6BC9916F18DFC5F0004D866C /* PlayerDAO.h */,
+				6BC9917018DFC5F0004D866C /* PlayerDAO.m */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		6BC9917118DFC5F0004D866C /* VO */ = {
+			isa = PBXGroup;
+			children = (
+				6BC9917218DFC5F0004D866C /* PlayerVO.h */,
+				6BC9917318DFC5F0004D866C /* PlayerVO.m */,
+			);
+			path = VO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1771,6 +1818,7 @@
 				6B6BA89718C67F6F00802B95 /* plane.c in Sources */,
 				6B6BA81A18C67F6E00802B95 /* OALSimpleAudio.m in Sources */,
 				6B6BA70C18C67F6D00802B95 /* CCGLProgram.m in Sources */,
+				6BC9917518DFC5F0004D866C /* PlayerDAO.m in Sources */,
 				6B6BA92E18C67F6F00802B95 /* main.m in Sources */,
 				6B6BA84118C67F6E00802B95 /* OALAudioSession.m in Sources */,
 				6B6BA8B818C67F6F00802B95 /* CCBLocalizationManager.m in Sources */,
@@ -1793,6 +1841,7 @@
 				6B6BA79418C67F6D00802B95 /* CCTextureAtlas.m in Sources */,
 				6B8C684918DD4A080008DEDE /* Background.m in Sources */,
 				6B6BA85518C67F6E00802B95 /* OALAudioFile.m in Sources */,
+				6BC9915218DF9B65004D866C /* GameModel.xcdatamodeld in Sources */,
 				6B6BA77B18C67F6D00802B95 /* ccShaders.m in Sources */,
 				6B6BA88F18C67F6F00802B95 /* matrix.c in Sources */,
 				6B6BA7A118C67F6D00802B95 /* CCTiledMapLayer.m in Sources */,
@@ -1800,6 +1849,7 @@
 				6B6BA71A18C67F6D00802B95 /* CCLabelTTF.m in Sources */,
 				6B6BA7CF18C67F6E00802B95 /* NSEvent+CC.m in Sources */,
 				6B6BA82C18C67F6E00802B95 /* ALDevice.m in Sources */,
+				6BC9917418DFC5F0004D866C /* CoreDataManager.m in Sources */,
 				6B6BA89F18C67F6F00802B95 /* vec2.c in Sources */,
 				6B6BA6CF18C67F6C00802B95 /* CCAction.m in Sources */,
 				6B6BA73318C67F6D00802B95 /* CCParallaxNode.m in Sources */,
@@ -1815,6 +1865,7 @@
 				6B6BA82618C67F6E00802B95 /* ALChannelSource.m in Sources */,
 				6B6BA6D218C67F6C00802B95 /* CCActionCatmullRom.m in Sources */,
 				6B6BA7EA18C67F6E00802B95 /* NSAttributedString+CCAdditions.m in Sources */,
+				6BC9917618DFC5F0004D866C /* PlayerVO.m in Sources */,
 				6B6BA8AC18C67F6F00802B95 /* CCBKeyframe.m in Sources */,
 				6B6BA86618C67F6F00802B95 /* CCControlTextureFactory.m in Sources */,
 				6B6BA6EB18C67F6C00802B95 /* CCAnimationCache.m in Sources */,
@@ -2056,6 +2107,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6BC9915018DF9B65004D866C /* GameModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6BC9915118DF9B65004D866C /* GameModel.xcdatamodel */,
+			);
+			currentVersion = 6BC9915118DF9B65004D866C /* GameModel.xcdatamodel */;
+			path = GameModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6B6BA67D18C67F6C00802B95 /* Project object */;
 }
