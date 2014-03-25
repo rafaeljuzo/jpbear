@@ -282,7 +282,7 @@
     
     
     if(_player_vel.y < 0) {
-//        CCSprite *oldPlatform = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",kPlatformsStartTag] recursively:NO];
+
 
         for(int t=kPlatformsStartTag; t < kPlatformsStartTag + kNumPlatforms; t++) {
             CCSprite *platform = (CCSprite*)[batchNode getChildByName:[NSString stringWithFormat:@"%d",t] recursively:NO];
@@ -293,14 +293,22 @@
             max_x = platform_pos.x - platform_size.width/2 - 10;
             min_x = platform_pos.x + platform_size.width/2 + 10;
             float min_y = platform_pos.y + (platform_size.height+player_size.height)/2 - kPlatformTopPadding;
-            
+            //check if the player is touching the platform, with min and max X and in the platform uper side.
             if(_player_pos.x > max_x &&
                _player_pos.x < min_x &&
                _player_pos.y > platform_pos.y &&
                _player_pos.y < min_y) {
                 [self jump];
+                //if has a colision, set the _currentPlatformTag with the counter and call the reset plataform method that reorganize the platforms
                 if (CGRectIntersectsRect(player.boundingBox, platform.boundingBox)) {
+                    _currentPlatformTag = t;
+                    [self resetPlatform];
+                    //set the score with the delta (player position Y)
+                    _playerScore += 1;
+                    NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
                     
+                    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
+                    [scoreLabel setString:scoreStr];
                 }
             }
         }
@@ -352,12 +360,12 @@
                 coin.position = pos;
             }
         }
-        //set the score with the delta (player position Y)
-        _playerScore += (int)delta;
-        NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
-        
-        CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
-        [scoreLabel setString:scoreStr];
+//        //set the score with the delta (player position Y)
+//        _playerScore += (int)delta;
+//        NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
+//        
+//        CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
+//        [scoreLabel setString:scoreStr];
     }
     
     player.position = _player_pos;
