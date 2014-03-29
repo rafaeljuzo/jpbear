@@ -15,7 +15,7 @@
 #define kNumClouds			8
 //values for distance between plataforms (max and min).
 #define kMinPlatformStep	150
-#define kMaxPlatformStep	400
+#define kMaxPlatformStep	450
 //number of plataforms shown at the screen
 #define kNumPlatforms		10
 #define kPlatformTopPadding 10

@@ -141,7 +141,7 @@
         //set the Y axis random if it is not the first platform.
 		_currentPlatformY += random() % (int)(_currentMaxPlatformStep - kMinPlatformStep) + kMinPlatformStep;
 		if(_currentMaxPlatformStep < kMaxPlatformStep) {
-			_currentMaxPlatformStep += 0.5f;
+			_currentMaxPlatformStep += 1.0f;
 		}
 	}
 	
@@ -190,7 +190,7 @@
 	_player_vel.y = 0;
 	
 	_player_acc.x = 0;
-	_player_acc.y = -1500.0f;
+	_player_acc.y = -1650.0f;
 	
 	_playerLookingRight = YES;
 	player.scaleX = 1.0f;
@@ -206,17 +206,18 @@
     
 	if(_playerScore < 10) {
 		_currentcoinType = 0;
-	} else if(_playerScore < 50) {
+	} else if(_playerScore < 20) {
 		_currentcoinType = random() % 2;
-	} else if(_playerScore < 100) {
+	} else if(_playerScore < 50) {
 		_currentcoinType = random() % 3;
 	} else {
 		_currentcoinType = random() % 2 + 2;
 	}
 }
 
-
-
+// -----------------------------------------------------------------------
+#pragma mark - Update Methods
+// -----------------------------------------------------------------------
 
 - (void)update:(CCTime)dt {
     //	CCLOG(@"Game::step");
@@ -239,11 +240,11 @@
     }
     
     CGSize player_size = player.contentSize;
-    float max_x = (int)[[UIScreen mainScreen] bounds].size.width - player_size.width/2;
-    float min_x = 0+player_size.width/2;
-    
-    if(_player_pos.x>max_x) _player_pos.x = max_x;
-    if(_player_pos.x<min_x) _player_pos.x = min_x;
+    float max_x = (int)[[UIScreen mainScreen] bounds].size.width;
+    float min_x = 0;
+    //allowing player cross the screen when reach the corner.
+    if(_player_pos.x>max_x) _player_pos.x = min_x;
+    if(_player_pos.x<min_x) _player_pos.x = max_x;
     
     _player_vel.y += _player_acc.y * dt;
     _player_pos.y += _player_vel.y * dt;
@@ -303,27 +304,21 @@
                 if (CGRectIntersectsRect(player.boundingBox, platform.boundingBox)) {
                     _currentPlatformTag = t;
                     [self resetPlatform];
-                    //set the score with the delta (player position Y)
-                    _playerScore += 1;
-                    NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
-                    
-                    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
-                    [scoreLabel setString:scoreStr];
+                    [self updateScore:1];
                 }
+            
             }
         }
-
-        
         if(_player_pos.y < -player_size.height/2) {
 //            [self showHighscores];
-            CCLOG(@"MORREU");
+            CCLOG(@" ");
             [self startGameOverSceneWithScore:_playerScore];
         }
         
-    } else if(_player_pos.y > 240) {
+    } else if(_player_pos.y > 250) {
         
-        float delta = _player_pos.y - 240;
-        _player_pos.y = 240;
+        float delta = _player_pos.y - 250;
+        _player_pos.y = 250;
         
         _currentPlatformY -= delta;
         
@@ -348,6 +343,7 @@
                 [self resetPlatform];
             } else {
                 platform.position = pos;
+                
             }
         }
         
@@ -360,17 +356,33 @@
                 coin.position = pos;
             }
         }
-//        //set the score with the delta (player position Y)
-//        _playerScore += (int)delta;
-//        NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
-//        
-//        CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
-//        [scoreLabel setString:scoreStr];
     }
-    
     player.position = _player_pos;
 }
 
+
+/**
+ Method responsible to update the player score
+ @param int score the score to be incremented.
+ */
+-(void)updateScore:(int)score
+{
+    //set the score
+    _playerScore += score;
+    //create a NSString with the score to be displayed on the screen.
+    NSString *scoreStr = [NSString stringWithFormat:@"%d",_playerScore];
+    // create a label to set with the score string
+    CCLabelBMFont *scoreLabel = (CCLabelBMFont*)[self getChildByName:kScoreLabel recursively:NO];
+    [scoreLabel setString:scoreStr];
+}
+
+// -----------------------------------------------------------------------
+#pragma mark - Player Features
+// -----------------------------------------------------------------------
+
+/**
+ Method responsible to make the player jump.
+ */
 - (void)jump {
     _player_vel.y = 800.0f + fabsf(_player_vel.x);
 }
